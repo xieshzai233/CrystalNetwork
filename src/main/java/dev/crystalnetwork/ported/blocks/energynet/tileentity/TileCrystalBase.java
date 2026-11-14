@@ -42,6 +42,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerListener;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -70,8 +71,18 @@ public abstract class TileCrystalBase extends TileBCore implements ITilePlaceLis
    public TileCrystalBase(BlockEntityType<?> tileEntityTypeIn, TechLevel techLevel, BlockPos pos, BlockState state) {
       super(tileEntityTypeIn, pos, state);
       this.techLevel = techLevel;
-      this.fxHandler = CrystalNetworkProxy.createENetFXHandler(this);
+      this.fxHandler = this.createServerFXHandler();
       this.capManager.setInternalManaged("energy", CapabilityOP.BLOCK, this.opStorage).saveBoth().syncContainer();
+   }
+
+   @Override
+   public void setLevel(Level level) {
+      boolean levelChanged = this.level != level;
+      super.setLevel(level);
+      if (levelChanged) {
+         this.fxHandler.tileUnload();
+         this.fxHandler = CrystalNetworkProxy.createENetFXHandler(this, level);
+      }
    }
 
    public void tick() {
