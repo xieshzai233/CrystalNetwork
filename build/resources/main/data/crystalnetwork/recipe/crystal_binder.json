@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" Q ", " IA", "I  "],
+  "key": {
+    "Q": { "item": "minecraft:quartz" },
+    "I": { "item": "minecraft:iron_ingot" },
+    "A": { "item": "minecraft:amethyst_shard" }
+  },
+  "result": { "id": "draconicevolution:crystal_binder", "count": 1 }
+}

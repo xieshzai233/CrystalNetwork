@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="crystalnetwork"
+version="1.0.0"
+displayName="Crystal Network Recipes"
+description='''Adds vanilla crafting recipes for Draconic Evolution energy crystals.'''
+
+[[dependencies.crystalnetwork]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.72,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.crystalnetwork]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.22)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.crystalnetwork]]
+modId="draconicevolution"
+type="required"
+versionRange="[3.1.4.633,)"
+ordering="AFTER"
+side="BOTH"

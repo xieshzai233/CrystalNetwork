@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" QC", "IRI", "CQ "],
+  "key": {
+    "Q": { "item": "minecraft:quartz" },
+    "C": { "item": "minecraft:copper_ingot" },
+    "I": { "item": "minecraft:iron_ingot" },
+    "R": { "item": "minecraft:redstone" }
+  },
+  "result": { "id": "draconicevolution:basic_io_crystal", "count": 1 }
+}
