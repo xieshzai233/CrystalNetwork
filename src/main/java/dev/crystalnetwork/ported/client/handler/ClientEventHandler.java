@@ -3,16 +3,14 @@ package dev.crystalnetwork.ported.client.handler;
 import dev.crystalnetwork.ported.items.CrystalBinder;
 import net.minecraft.client.Minecraft;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForge;
 
 public final class ClientEventHandler {
     public static int elapsedTicks;
     public static boolean playerHoldingWrench;
 
-    public static void register(IEventBus modBus) {
-        modBus.addListener(ClientEventHandler::clientTick);
-        modBus.addListener(ClientEventHandler::rightClick);
+    public static void register() {
+        NeoForge.EVENT_BUS.addListener(ClientEventHandler::clientTick);
     }
 
     private static void clientTick(ClientTickEvent.Post event) {
@@ -22,6 +20,5 @@ public final class ClientEventHandler {
                 || player.getOffhandItem().getItem() instanceof CrystalBinder);
     }
 
-    private static void rightClick(PlayerInteractEvent.RightClickBlock event) { }
     private ClientEventHandler() { }
 }

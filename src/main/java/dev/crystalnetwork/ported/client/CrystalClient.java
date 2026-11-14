@@ -18,7 +18,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 public final class CrystalClient {
     public static void register(IEventBus modBus) {
-        ClientEventHandler.register(modBus);
+        ClientEventHandler.register();
         AtlasTextureHelper.register(modBus);
         CrystalShaders.register(modBus);
         modBus.addListener(CrystalClient::registerRenderers);
