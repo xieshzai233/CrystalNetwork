@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "particle": "minecraft:block/glass"
+    "particle": "crystalnetwork:models/crystal_no_shader"
   }
 }

@@ -12,6 +12,7 @@ import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import com.brandon3055.brandonscore.api.TechLevel;
 import com.brandon3055.brandonscore.api.TimeKeeper;
+import com.brandon3055.brandonscore.client.render.RenderUtils;
 import dev.crystalnetwork.ported.blocks.energynet.EnergyCrystal;
 import dev.crystalnetwork.ported.client.CrystalShaders;
 import dev.crystalnetwork.ported.client.render.tile.RenderTileEnergyCrystal;
@@ -63,6 +64,8 @@ public class RenderItemEnergyCrystal implements IItemRenderer {
    }
 
    public void renderItem(ItemStack stack, ItemDisplayContext context, PoseStack mStack, MultiBufferSource getter, int packedLight, int packedOverlay) {
+      // Uniforms belong to the shader, so pending geometry must draw before they change.
+      RenderUtils.endBatch(getter);
       int tier = this.techLevel.index;
       Matrix4 mat = new Matrix4(mStack);
       CCRenderState ccrs = CCRenderState.instance();
@@ -86,6 +89,8 @@ public class RenderItemEnergyCrystal implements IItemRenderer {
          ccrs.bind(RenderTileEnergyCrystal.crystalType, getter);
          this.crystalFull.render(ccrs, new IVertexOperation[]{mat});
       }
+      // GUI items share a buffer; draw this crystal while its tier colour is still set.
+      RenderUtils.endBatch(getter);
    }
 
    @Nullable
