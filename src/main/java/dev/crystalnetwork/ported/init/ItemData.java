@@ -1,10 +1,8 @@
 package dev.crystalnetwork.ported.init;
 
-import com.mojang.serialization.Codec;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.world.item.component.DataComponentType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;

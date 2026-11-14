@@ -1,4 +1,4 @@
-package dev.crystalnetwork.ported.items.tools;
+package dev.crystalnetwork.ported.items;
 
 import dev.crystalnetwork.ported.api.energy.ICrystalBinder;
 import net.minecraft.core.BlockPos;
