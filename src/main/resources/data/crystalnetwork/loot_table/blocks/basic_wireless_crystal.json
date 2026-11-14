@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"crystalnetwork:basic_wireless_crystal"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

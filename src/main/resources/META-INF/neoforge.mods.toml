@@ -1,0 +1,37 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT; CoFH Don't Be a Jerk; CC BY-NC-SA 4.0"
+
+[[mods]]
+modId="crystalnetwork"
+version="1.0.0"
+displayName="Crystal Network"
+description='''Adds standalone energy crystals with linked and wireless FE transfer.'''
+
+[[dependencies.crystalnetwork]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.72,21.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.crystalnetwork]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.22)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.crystalnetwork]]
+modId="brandonscore"
+type="required"
+versionRange="[3.2.1.309,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.crystalnetwork]]
+modId="codechickenlib"
+type="required"
+versionRange="[4.6.1.529,)"
+ordering="NONE"
+side="BOTH"

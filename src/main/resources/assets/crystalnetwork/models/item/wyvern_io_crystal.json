@@ -1,0 +1,5 @@
+{
+  "parent": "minecraft:item/generated",
+  "class": "dev.crystalnetwork.ported.client.render.item.RenderItemEnergyCrystal$ITEM_WYVERN_IO_CRYSTAL",
+  "loader": "codechickenlib:class"
+}

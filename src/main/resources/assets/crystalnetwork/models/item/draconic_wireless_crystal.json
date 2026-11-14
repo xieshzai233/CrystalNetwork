@@ -1,0 +1,5 @@
+{
+  "parent": "minecraft:item/generated",
+  "class": "dev.crystalnetwork.ported.client.render.item.RenderItemEnergyCrystal$ITEM_DRACONIC_WIRELESS_CRYSTAL",
+  "loader": "codechickenlib:class"
+}
