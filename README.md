@@ -1,5 +1,7 @@
 # 水晶网络
 
+当前状态：核心移植代码和资源已写入，但本次独立版本尚未完成编译、启动和游戏内验证。FE 传输、连接、粒子、休眠与挖掘掉落仍需测试确认。
+
 Minecraft 1.21.1 / NeoForge 独立模组，移植 Draconic Evolution 能量水晶网络的核心逻辑。游戏中不需要安装 Draconic Evolution；模组提供基础、飞龙、神龙三级的中继水晶、输入/输出水晶、无线水晶，以及水晶绑定器。
 
 水晶连接、链接范围与数量、FE 容量与传输、输入/输出模式、无线接收端和空闲接收端休眠沿用 DE 对应实现。客户端使用移植的 DE 水晶 OBJ 模型、贴图、连接光束和传输粒子效果。方块使用正确工具等级并正常掉落自身。
@@ -28,6 +30,12 @@ Minecraft 1.21.1 / NeoForge 独立模组，移植 Draconic Evolution 能量水�
 ~~~
 
 产物位于 `build/libs`。
+
+## GitHub 云编译
+
+推送代码后，GitHub Actions 会使用 Java 21 自动构建。也可在仓库的 **Actions → Build JAR → Run workflow** 手动触发。
+
+构建成功后，打开该次运行，在 **Artifacts** 中下载 `CrystalNetwork-JAR`，解压取得模组 JAR。构建失败时，查看 **Build mod** 步骤的日志；失败的运行不会提供 JAR。构建通过仍需在游戏内测试功能。
 
 ## 存档
 

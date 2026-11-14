@@ -1,23 +1,37 @@
-   name: Build mod
+name: Build JAR
 
-   on:
-     workflow_dispatch:
+on:
+  push:
+  workflow_dispatch:
 
-   jobs:
-     build:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v4
-         - uses: actions/setup-java@v4
-           with:
-             distribution: temurin
-             java-version: '21'
-         - uses: gradle/actions/setup-gradle@v6
-         - name: Build
-           run: chmod +x gradlew && ./gradlew build
-         - name: Upload JAR
-           uses: actions/upload-artifact@v4
-           with:
-             name: CrystalNetwork-JAR
-             path: build/libs/*.jar
-             if-no-files-found: error
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+
+      - name: Build mod
+        run: bash ./gradlew --no-daemon build --stacktrace
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: CrystalNetwork-JAR
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
+            !build/libs/*-javadoc.jar
+          if-no-files-found: error
+          retention-days: 14
