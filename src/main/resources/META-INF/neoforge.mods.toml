@@ -4,7 +4,7 @@ license="MIT; CoFH Don't Be a Jerk; CC BY-NC-SA 4.0"
 
 [[mods]]
 modId="crystalnetwork"
-version="1.0.0"
+version="1.0.1"
 displayName="Crystal Network"
 description='''Adds standalone energy crystals with linked and wireless FE transfer.'''
 

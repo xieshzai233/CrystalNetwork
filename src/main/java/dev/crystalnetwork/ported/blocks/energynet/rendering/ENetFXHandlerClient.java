@@ -6,83 +6,68 @@ import dev.crystalnetwork.ported.client.DEParticles;
 import dev.crystalnetwork.ported.client.render.effect.CrystalFXBase;
 import dev.crystalnetwork.ported.client.render.effect.CrystalFXBeam;
 import dev.crystalnetwork.ported.network.CrystalUpdateBatcher;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class ENetFXHandlerClient<T extends BlockEntity & IENetEffectTile> extends ENetFXHandler<T> {
-   protected CrystalFXBase staticFX;
-   protected LinkedList<CrystalFXBase> beamFXList = new LinkedList<>();
+    protected CrystalFXBase<?> staticFX;
+    private final CrystalFXConnections<CrystalFXBeam<T>> beams = new CrystalFXConnections<>();
 
-   public ENetFXHandlerClient(T tile) {
-      super(tile);
-   }
+    public ENetFXHandlerClient(T tile) {
+        super(tile);
+    }
 
-   @Override
-   public void update() {
-      if (this.tile.hasStaticFX()) {
-         if (this.staticFX == null || !this.staticFX.isAlive()) {
-            this.staticFX = this.tile.createStaticFX();
-            DEParticles.addParticleDirect(this.tile.getLevel(), this.staticFX);
-         }
+    @Override
+    public void update() {
+        if (tile.hasStaticFX()) {
+            if (staticFX == null || !staticFX.isAlive()) {
+                staticFX = tile.createStaticFX();
+                staticFX.updateFX(0.5F);
+                DEParticles.addParticleDirect(tile.getLevel(), staticFX);
+            } else {
+                staticFX.updateFX(0.5F);
+            }
+        }
 
-         this.staticFX.updateFX(0.5F);
-      }
+        beams.update(tile.getLevel(), tile.getLinks(), tile.getFlowRates(), pos -> {
+            BlockEntity target = tile.getLevel().getBlockEntity(pos);
+            return target instanceof ICrystalLink link ? new CrystalFXBeam<>(tile.getLevel(), tile, link) : null;
+        });
+    }
 
-      boolean requiresUpdate = false;
+    @Override
+    public void updateReceived(CrystalUpdateBatcher.BatchedCrystalUpdate update) {
+        tile.modifyEnergyStored(update.crystalCapacity - tile.getEnergyStored());
+        applyFlowUpdates(tile.getFlowRates(), update.indexToFlowMap, 0, tile.getLinks().size());
+    }
 
-      for (CrystalFXBase beam : this.beamFXList) {
-         if (!beam.isAlive()) {
-            requiresUpdate = true;
-         }
+    protected static void applyFlowUpdates(List<Byte> flows, Map<Byte, Byte> changes, int offset, int size) {
+        // Packet maps contain deltas and may arrive in any insertion order.
+        for (int i = 0; i < size; i++) {
+            byte flow = changes.getOrDefault((byte) (i + offset), i < flows.size() ? flows.get(i) : (byte) 0);
+            if (i < flows.size()) {
+                flows.set(i, flow);
+            } else {
+                flows.add(flow);
+            }
+        }
+        while (flows.size() > size) {
+            flows.remove(flows.size() - 1);
+        }
+    }
 
-         if (this.tile.getFlowRates().size() > this.beamFXList.indexOf(beam)) {
-            beam.updateFX((float)(this.tile.getFlowRates().get((byte)this.beamFXList.indexOf(beam)) & 255) / 255.0F);
-         }
-      }
+    @Override
+    public void reloadConnections() {
+        beams.reloadConnections();
+    }
 
-      if (requiresUpdate || this.tile.getLinks().size() != this.beamFXList.size()) {
-         this.reloadConnections();
-      }
-   }
-
-   @Override
-   public void updateReceived(CrystalUpdateBatcher.BatchedCrystalUpdate update) {
-      this.tile.modifyEnergyStored(update.crystalCapacity - this.tile.getEnergyStored());
-      Map<Byte, Byte> flowMap = update.indexToFlowMap;
-
-      for (byte index = 0; index < this.tile.getFlowRates().size(); index++) {
-         if (!flowMap.containsKey(index)) {
-            flowMap.put(index, this.tile.getFlowRates().get(index));
-         }
-      }
-
-      this.tile.getFlowRates().clear();
-
-      for (byte i = 0; i < flowMap.size(); i++) {
-         if (flowMap.containsKey(i)) {
-            this.tile.getFlowRates().add(flowMap.get(i));
-         }
-      }
-   }
-
-   @Override
-   public void reloadConnections() {
-      this.beamFXList.clear();
-
-      for (BlockPos pos : this.tile.getLinks()) {
-         BlockEntity target = this.tile.getLevel().getBlockEntity(pos);
-         if (target instanceof ICrystalLink) {
-            CrystalFXBeam beam = new CrystalFXBeam(this.tile.getLevel(), this.tile, (ICrystalLink)target);
-            this.beamFXList.add(beam);
-            DEParticles.addParticleDirect(this.tile.getLevel(), beam);
-         }
-      }
-   }
-
-   @Override
-   public void tileUnload() {
-      super.tileUnload();
-   }
+    @Override
+    public void tileUnload() {
+        if (staticFX != null) {
+            staticFX.remove();
+            staticFX = null;
+        }
+        beams.clear();
+    }
 }

@@ -11,7 +11,7 @@ import org.joml.Vector3f;
 
 public abstract class CrystalFXBase<T extends BlockEntity & IENetEffectTile> extends Particle {
    protected final T tile;
-   protected int ticksTillDeath = 0;
+   protected int ticksTillDeath = 4;
    protected float fxState;
    public boolean renderEnabled = true;
    private int ttl = 10;

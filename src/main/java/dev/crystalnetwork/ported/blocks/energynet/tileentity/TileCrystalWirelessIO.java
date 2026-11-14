@@ -357,6 +357,7 @@ public class TileCrystalWirelessIO extends TileCrystalBase {
       this.linkedReceivers.add(offset);
       this.receiverSideMap.put(offset, side);
       this.reCachePositions();
+      this.dirtyBlock();
       this.updateBlock();
    }
 
@@ -365,6 +366,7 @@ public class TileCrystalWirelessIO extends TileCrystalBase {
       this.linkedReceivers.remove(offset);
       this.receiverSideMap.remove(offset);
       this.reCachePositions();
+      this.dirtyBlock();
       this.updateBlock();
    }
 

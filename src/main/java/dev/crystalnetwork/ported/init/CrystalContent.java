@@ -1,6 +1,7 @@
 package dev.crystalnetwork.ported.init;
 
 import com.brandon3055.brandonscore.api.TechLevel;
+import com.brandon3055.brandonscore.blocks.ItemBlockBCore;
 import dev.crystalnetwork.CrystalNetwork;
 import dev.crystalnetwork.ported.blocks.energynet.EnergyCrystal;
 import dev.crystalnetwork.ported.blocks.energynet.tileentity.TileCrystalDirectIO;
@@ -9,7 +10,6 @@ import dev.crystalnetwork.ported.blocks.energynet.tileentity.TileCrystalWireless
 import dev.crystalnetwork.ported.items.CrystalBinder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -60,7 +60,7 @@ public final class CrystalContent {
 
     private static DeferredHolder<Block, EnergyCrystal> crystal(String id, BlockBehaviour.Properties properties, TechLevel tier, EnergyCrystal.CrystalType type) {
         DeferredHolder<Block, EnergyCrystal> block = BLOCKS.register(id, () -> new EnergyCrystal(properties, tier, type));
-        ITEMS.register(id, () -> new BlockItem(block.get(), new Item.Properties()));
+        ITEMS.register(id, () -> new ItemBlockBCore(block.get(), new Item.Properties()));
         return block;
     }
 

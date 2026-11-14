@@ -42,14 +42,15 @@ public class BinderHandler {
    public static boolean onBinderUse(Player player, InteractionHand hand, Level level, BlockPos blockClicked, @Nonnull ItemStack binder, Direction sideClicked) {
       BlockEntity tile = level.getBlockEntity(blockClicked);
       boolean isBound = isBound(binder);
+      // Predict the consumed interaction, but only the server changes bindings and links.
+      if (level.isClientSide) {
+         return tile instanceof ICrystalLink || isBound;
+      }
       if (tile instanceof ICrystalLink && player.isShiftKeyDown()) {
          bind(binder, blockClicked, level);
-         if (level.isClientSide) {
-            ChatHelper.sendIndexed(
-               player, Component.translatable("gui.crystalnetwork.energy_net.pos_saved_to_tool").withStyle(ChatFormatting.GREEN), TileCrystalBase.MSG_ID
-            );
-            player.swing(hand);
-         }
+         ChatHelper.sendIndexed(
+            player, Component.translatable("gui.crystalnetwork.energy_net.pos_saved_to_tool").withStyle(ChatFormatting.GREEN), TileCrystalBase.MSG_ID
+         );
 
          return true;
       } else if (tile instanceof ICrystalLink && !isBound) {
@@ -59,7 +60,7 @@ public class BinderHandler {
          return true;
       } else if (isBound) {
          GlobalPos boundPos = getBound(binder);
-         if (boundPos.dimension() != level.dimension()) {
+         if (!boundPos.dimension().equals(level.dimension())) {
             ChatHelper.sendIndexed(
                player, Component.translatable("gui.crystalnetwork.energy_net.link_to_other_dimension").withStyle(ChatFormatting.RED), TileCrystalBase.MSG_ID
             );
