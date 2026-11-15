@@ -4,7 +4,7 @@
 
 ## 下载与安装
 
-从 [Releases](https://github.com/xieshzai233/CrystalNetwork/releases) 下载 `crystalnetwork-1.0.6.jar`，放入当前游戏实例的 `mods` 文件夹。不要把 GitHub Actions 的 ZIP 文件直接放进 `mods`，也不要同时保留多个版本的水晶网络 JAR。
+从 [Releases](https://github.com/xieshzai233/CrystalNetwork/releases) 下载 `crystalnetwork-1.0.7.jar`，放入当前游戏实例的 `mods` 文件夹。不要把 GitHub Actions 的 ZIP 文件直接放进 `mods`，也不要同时保留多个版本的水晶网络 JAR。
 
 运行依赖：
 
@@ -57,4 +57,4 @@ JAR 输出到 `build/libs/`。推送代码后，GitHub Actions 也会自动使�
 
 水晶使用 `crystalnetwork:` 注册名。升级旧测试版本前请备份存档；如果旧版本的水晶无法正确显示或工作，请先拆除并重新放置。
 
-1.0.6 支持用其他模组的扳手或配置器潜行右键拆除水晶，并可将水晶单独放入工作台清除其携带的数据。各等级硬度与抗爆值沿用原有设定；粒子效果尚未完成本地游戏内复测。
+1.0.7 修正神龙级中继水晶配方，使其与无线水晶配方区分。1.0.6 支持用其他模组的扳手或配置器潜行右键拆除水晶，并可将水晶单独放入工作台清除其携带的数据。各等级硬度与抗爆值沿用原有设定；粒子效果尚未完成本地游戏内复测。
