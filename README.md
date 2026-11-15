@@ -4,7 +4,7 @@
 
 ## 下载与安装
 
-从 [Releases](https://github.com/xieshzai233/CrystalNetwork/releases) 下载 `crystalnetwork-1.0.4.jar`，放入当前游戏实例的 `mods` 文件夹。不要把 GitHub Actions 的 ZIP 文件直接放进 `mods`，也不要同时保留多个版本的水晶网络 JAR。
+从 [Releases](https://github.com/xieshzai233/CrystalNetwork/releases) 下载 `crystalnetwork-1.0.5.jar`，放入当前游戏实例的 `mods` 文件夹。不要把 GitHub Actions 的 ZIP 文件直接放进 `mods`，也不要同时保留多个版本的水晶网络 JAR。
 
 运行依赖：
 
@@ -23,6 +23,7 @@ Brandon's Core 与 CodeChickenLib 需要单独安装，本模组不会打包这�
 - 无线水晶可绑定支持 FE 的机器作为接收端，并按原网络逻辑传输能量、休眠和恢复轮询。
 - 连接光束、能量传输粒子和无线连接提示沿用水晶网络表现。
 - 绑定器可连接或断开水晶，也可为无线水晶添加、移除接收端。
+- 潜行时手持其他模组的扳手或配置器右键水晶，可拆除并掉落水晶；水晶绑定器仍用于绑定和连接。
 - 方块具有挖掘掉落，配方仅使用原版材料；神龙级配方中最高价值材料为下界合金锭。
 
 模型和贴图来自 Draconic Evolution 1.21.1-3.1.4.633。相关代码与资源来源及许可证见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
@@ -55,4 +56,4 @@ JAR 输出到 `build/libs/`。推送代码后，GitHub Actions 也会自动使�
 
 水晶使用 `crystalnetwork:` 注册名。升级旧测试版本前请备份存档；如果旧版本的水晶无法正确显示或工作，请先拆除并重新放置。
 
-1.0.4 将水晶方块硬度统一为深板岩等级。1.0.3 已通过 GitHub Actions 云编译，且粒子纹理已改为使用方块图集中的水晶贴图；粒子效果尚未完成本地游戏内复测。
+1.0.5 恢复各等级原有硬度与抗爆值，并支持用其他模组的扳手或配置器潜行右键拆除水晶。1.0.4 已通过 GitHub Actions 云编译；粒子效果尚未完成本地游戏内复测。
