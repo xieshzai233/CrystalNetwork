@@ -25,9 +25,9 @@ public final class CrystalContent {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, CrystalNetwork.MOD_ID);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CrystalNetwork.MOD_ID);
 
-    private static final BlockBehaviour.Properties BASIC = BlockBehaviour.Properties.of().strength(3.0F, 8.0F).noOcclusion();
-    private static final BlockBehaviour.Properties WYVERN = BlockBehaviour.Properties.of().strength(5.0F, 16.0F).noOcclusion();
-    private static final BlockBehaviour.Properties DRACONIC = BlockBehaviour.Properties.of().strength(8.0F, 32.0F).noOcclusion();
+    private static final BlockBehaviour.Properties BASIC = BlockBehaviour.Properties.of().strength(3.0F, 6.0F).noOcclusion();
+    private static final BlockBehaviour.Properties WYVERN = BlockBehaviour.Properties.of().strength(3.0F, 6.0F).noOcclusion();
+    private static final BlockBehaviour.Properties DRACONIC = BlockBehaviour.Properties.of().strength(3.0F, 6.0F).noOcclusion();
 
     public static final DeferredHolder<Block, EnergyCrystal> BASIC_IO = crystal("basic_io_crystal", BASIC, TechLevel.DRACONIUM, EnergyCrystal.CrystalType.CRYSTAL_IO);
     public static final DeferredHolder<Block, EnergyCrystal> WYVERN_IO = crystal("wyvern_io_crystal", WYVERN, TechLevel.WYVERN, EnergyCrystal.CrystalType.CRYSTAL_IO);

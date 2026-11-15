@@ -4,7 +4,7 @@
 
 ## 下载与安装
 
-从 [Releases](https://github.com/xieshzai233/CrystalNetwork/releases) 下载 `crystalnetwork-1.0.3.jar`，放入当前游戏实例的 `mods` 文件夹。不要把 GitHub Actions 的 ZIP 文件直接放进 `mods`，也不要同时保留多个版本的水晶网络 JAR。
+从 [Releases](https://github.com/xieshzai233/CrystalNetwork/releases) 下载 `crystalnetwork-1.0.4.jar`，放入当前游戏实例的 `mods` 文件夹。不要把 GitHub Actions 的 ZIP 文件直接放进 `mods`，也不要同时保留多个版本的水晶网络 JAR。
 
 运行依赖：
 
@@ -55,4 +55,4 @@ JAR 输出到 `build/libs/`。推送代码后，GitHub Actions 也会自动使�
 
 水晶使用 `crystalnetwork:` 注册名。升级旧测试版本前请备份存档；如果旧版本的水晶无法正确显示或工作，请先拆除并重新放置。
 
-1.0.3 已通过 GitHub Actions 云编译，且粒子纹理已改为使用方块图集中的水晶贴图。该版本尚未完成本地游戏内复测。
+1.0.4 将水晶方块硬度统一为深板岩等级。1.0.3 已通过 GitHub Actions 云编译，且粒子纹理已改为使用方块图集中的水晶贴图；粒子效果尚未完成本地游戏内复测。
