@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "crystalnetwork:basic_relay_crystal" }
+  ],
+  "result": { "id": "crystalnetwork:basic_relay_crystal", "count": 1 }
+}

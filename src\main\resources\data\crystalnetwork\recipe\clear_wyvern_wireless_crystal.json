@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "crystalnetwork:wyvern_wireless_crystal" }
+  ],
+  "result": { "id": "crystalnetwork:wyvern_wireless_crystal", "count": 1 }
+}

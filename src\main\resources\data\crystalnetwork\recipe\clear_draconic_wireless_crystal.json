@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "crystalnetwork:draconic_wireless_crystal" }
+  ],
+  "result": { "id": "crystalnetwork:draconic_wireless_crystal", "count": 1 }
+}
