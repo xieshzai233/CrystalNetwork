@@ -32,3 +32,11 @@ Minecraft 1.21.1 / NeoForge 独立模组，移植 Draconic Evolution 能量水�
 ## 存档
 
 此版本使用 `crystalnetwork:` 新注册名。若旧测试版本放置过 `crystalnetwork:` 自制水晶方块，升级前请备份存档并拆除旧水晶；旧方块实体数据不会自动迁移。
+
+
+---
+
+## 注
+
+此项目由作者突然兴起而写(也因为DE的水晶能量网络太过于好用)
+代码的编辑，仓库的上传以及Jar的云编译均由GPT6.1Sol完成
